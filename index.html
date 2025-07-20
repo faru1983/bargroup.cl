@@ -3,7 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bargroup - Barras Móviles de Lujo</title>
+    <title>Bargroup | Barras Móviles de Lujo para Eventos, Bodas y Fiestas en Chile</title>
+    <meta name="description" content="Bargroup ofrece barras móviles de lujo, coctelería profesional y servicios premium para bodas, eventos corporativos y fiestas privadas en Chile. Cotiza tu evento y vive una experiencia única.">
+    <meta name="keywords" content="barra móvil, coctelería, eventos, bodas, fiestas, bar, bartender, cócteles, Chile, premium, lujo, cotización, servicio de bar">
+    <meta name="author" content="Bargroup Chile">
+    <link rel="canonical" href="https://bargroup.cl/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bargroup.cl/">
+    <meta property="og:title" content="Bargroup | Barras Móviles de Lujo para Eventos, Bodas y Fiestas en Chile">
+    <meta property="og:description" content="Bargroup ofrece barras móviles de lujo, coctelería profesional y servicios premium para bodas, eventos corporativos y fiestas privadas en Chile. Cotiza tu evento y vive una experiencia única.">
+    <meta property="og:image" content="https://bargroup.cl/image/logo_dorado.webp">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://bargroup.cl/">
+    <meta name="twitter:title" content="Bargroup | Barras Móviles de Lujo para Eventos, Bodas y Fiestas en Chile">
+    <meta name="twitter:description" content="Bargroup ofrece barras móviles de lujo, coctelería profesional y servicios premium para bodas, eventos corporativos y fiestas privadas en Chile. Cotiza tu evento y vive una experiencia única.">
+    <meta name="twitter:image" content="https://bargroup.cl/image/logo_dorado.webp">
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="imgage/apple-touch-icon.png">
@@ -162,31 +180,43 @@
             object-fit: cover;
             display: block;
         }
-
-        /* --- ESTILOS MODIFICADOS Y AÑADIDOS --- */
-        /* Estilos específicos para las tarjetas de cócteles para ajustar proporción */
+       
         #cocktails .service-card {
-            margin: 0 auto; /* Centra la tarjeta en su columna */
-            max-width: 350px; /* Un ancho máximo para que la tarjeta sea más vertical */
+            margin: 0 auto;
+            max-width: 350px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+            transition: transform 0.4s cubic-bezier(.25,.8,.25,1), box-shadow 0.4s cubic-bezier(.25,.8,.25,1);
+            will-change: transform, box-shadow;
+        }
+
+        #cocktails .service-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.32);
+            z-index: 2;
         }
 
         #cocktails .service-card img {
-            aspect-ratio: 2 / 3; /* Forzar la proporción 2:3 */
+            aspect-ratio: 2 / 3;
+            transition: transform 0.4s cubic-bezier(.25,.8,.25,1), filter 0.4s cubic-bezier(.25,.8,.25,1);
+        }
+
+        #cocktails .service-card:hover img {
+            transform: scale(1.07);
+            filter: brightness(0.85) saturate(1.1);
         }
 
         #cocktails .service-card-body {
-            padding: 25px; /* Un poco menos de padding para balancear */
+            padding: 25px;
         }
 
         #cocktails .service-card-body h3 {
-            font-size: 1.6rem; /* Ajuste de tamaño para el título */
+            font-size: 1.6rem;
         }
 
         #cocktails .service-card-body p {
-            font-size: 0.95rem; /* Ajuste de tamaño para la descripción */
+            font-size: 0.95rem;
             line-height: 1.6;
         }
-        /* --- FIN DE ESTILOS MODIFICADOS --- */
 
 
         .service-card-body {
@@ -302,8 +332,7 @@
         scroll-padding-top: 30px;
         scroll-behavior: smooth;
         }
-
-        /* Tarjetas de cócteles del mismo tamaño en desktop */
+        
         @media (min-width: 992px) {
             .row.g-4 > [class^='col-lg-4'] {
                 display: flex;
@@ -343,7 +372,7 @@
         </video>
         <div class="overlay"></div>
         <div class="hero-content text-center  ">
-            <img src="image/logo_dorado.webp" alt="BarGroup Logo" style="max-width: 350px; width: 100%;" />
+            <img src="image/logo_dorado.webp" alt="Logo BarGroup - Barras Móviles de Lujo en Chile" style="max-width: 350px; width: 100%;" />
             <p class="lead">El mejor servicio de Bar y Coctelería para eventos.</p>
             <a href="#contact" class="btn btn-gold mt-4">Cotizar Ahora</a>
         </div>
@@ -360,7 +389,7 @@
                 <!-- Boulevardier -->
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card animate__animated animate__fadeInUp">
-                        <img src="image/cocktail_boulevardier.webp" alt="Boulevardier">
+                        <img src="image/cocktail_boulevardier.webp" alt="Cóctel Boulevardier - Bargroup Chile, whisky, campari y vermut rojo dulce">
                         <div class="service-card-body">
                             <h3>Boulevardier</h3>
                             <p><strong>Ingredientes:</strong><br>45 ml Bourbon o Rye Whiskey<br>30 ml Bitter Campari<br>30 ml Vermut Rojo Dulce</p>
@@ -372,7 +401,7 @@
                 <!-- Clover Club -->
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card animate__animated animate__fadeInUp" style="animation-delay:0.1s;">
-                        <img src="image/cocktail_clover_club.webp" alt="Clover Club">
+                        <img src="image/cocktail_clover_club.webp" alt="Cóctel Clover Club - Bargroup Chile, gin, frambuesa y limón fresco">
                         <div class="service-card-body">
                             <h3>Clover Club</h3>
                             <p><strong>Ingredientes:</strong><br>45 ml Gin<br>15 ml Jarabe de Frambuesa<br>15 ml Jugo de Limón Fresco<br>Unas gotas de clara de huevo</p>
@@ -384,7 +413,7 @@
                 <!-- Daiquiri -->
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card animate__animated animate__fadeInUp" style="animation-delay:0.2s;">
-                        <img src="image/cocktail_daiquiri.webp" alt="Daiquiri">
+                        <img src="image/cocktail_daiquiri.webp" alt="Cóctel Daiquiri - Bargroup Chile, ron blanco y lima fresco">
                         <div class="service-card-body">
                             <h3>Daiquiri</h3>
                             <p><strong>Ingredientes:</strong><br>60 ml Ron Blanco Cubano<br>20 ml Jugo de Lima Fresco<br>2 cucharaditas de azúcar fina</p>
@@ -396,7 +425,7 @@
                 <!-- Dry Martini -->
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card animate__animated animate__fadeInUp" style="animation-delay:0.3s;">
-                        <img src="image/cocktail_dry_martini.webp" alt="Dry Martini">
+                        <img src="image/cocktail_dry_martini.webp" alt="Cóctel Dry Martini - Bargroup Chile, gin y vermut seco">
                         <div class="service-card-body">
                             <h3>Dry Martini</h3>
                             <p><strong>Ingredientes:</strong><br>60 ml Gin<br>10 ml Vermut Seco</p>
@@ -408,7 +437,7 @@
                 <!-- Negroni -->
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card animate__animated animate__fadeInUp" style="animation-delay:0.4s;">
-                        <img src="image/cocktail_negroni.webp" alt="Negroni">
+                        <img src="image/cocktail_negroni.webp" alt="Cóctel Negroni - Bargroup Chile, gin, campari y vermut rojo dulce">
                         <div class="service-card-body">
                             <h3>Negroni</h3>
                             <p><strong>Ingredientes:</strong><br>30 ml Gin<br>30 ml Bitter Campari<br>30 ml Vermut Rojo Dulce</p>
@@ -420,7 +449,7 @@
                 <!-- Mojito -->
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card animate__animated animate__fadeInUp" style="animation-delay:0.5s;">
-                        <img src="image/cocktail_mojito.webp" alt="Mojito">
+                        <img src="image/cocktail_mojito.webp" alt="Cóctel Mojito - Bargroup Chile, ron blanco, lima y menta">
                         <div class="service-card-body">
                             <h3>Mojito</h3>
                             <p><strong>Ingredientes:</strong><br>45 ml Ron Blanco Cubano<br>20 ml Jugo de Lima Fresco<br>6 ramas de menta<br>2 cucharaditas de azúcar blanca<br>Agua con gas</p>
@@ -443,7 +472,7 @@
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card  ">
-                        <img src="image/luxury-wedding-bar.webp" alt="Bodas de Lujo">
+                        <img src="image/luxury-wedding-bar.webp" alt="Bodas de Lujo - Barra móvil para matrimonios premium en Chile">
                         <div class="service-card-body">
                             <div class="icon"><i class="fas fa-ring"></i></div>
                             <h3>Bodas de Lujo</h3>
@@ -453,7 +482,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card  " style="animation-delay: 0.2s;">
-                        <img src="image/corporate-event-bar.webp" alt="Eventos Corporativos">
+                        <img src="image/corporate-event-bar.webp" alt="Eventos Corporativos - Barra móvil para empresas y lanzamientos">
                         <div class="service-card-body">
                             <div class="icon"><i class="fas fa-briefcase"></i></div>
                             <h3>Eventos Corporativos</h3>
@@ -463,7 +492,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card  " style="animation-delay: 0.4s;">
-                        <img src="image/private-party-bar.webp" alt="Fiestas Privadas">
+                        <img src="image/private-party-bar.webp" alt="Fiestas Privadas - Barra móvil para celebraciones exclusivas">
                         <div class="service-card-body">
                             <div class="icon"><i class="fas fa-glass-cheers"></i></div>
                             <h3>Fiestas Privadas</h3>
