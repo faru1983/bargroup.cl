@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BarGroup - Barras Móviles de Lujo</title>
+    <title>Bargroup - Barras Móviles de Lujo</title>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="imgage/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="imgage/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="imgage/favicon-16x16.png">
+    <link rel="manifest" href="imgage/site.webmanifest">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,6 +25,9 @@
 
     <!-- Animate.css for subtle animations -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
     <style>
         :root {
@@ -61,7 +71,7 @@
         }
 
         .nav-link:hover, .nav-link.active {
-            color: var(--primary-gold);
+            color: var(--primary-gold) !important;
         }
 
         .hero {
@@ -137,6 +147,9 @@
             overflow: hidden;
             transition: transform 0.4s ease, box-shadow 0.4s ease;
             border: 1px solid #2a2a2a;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .service-card:hover {
@@ -146,12 +159,42 @@
 
         .service-card img {
             width: 100%;
-            height: 250px;
             object-fit: cover;
+            display: block;
         }
+
+        /* --- ESTILOS MODIFICADOS Y AÑADIDOS --- */
+        /* Estilos específicos para las tarjetas de cócteles para ajustar proporción */
+        #cocktails .service-card {
+            margin: 0 auto; /* Centra la tarjeta en su columna */
+            max-width: 350px; /* Un ancho máximo para que la tarjeta sea más vertical */
+        }
+
+        #cocktails .service-card img {
+            aspect-ratio: 2 / 3; /* Forzar la proporción 2:3 */
+        }
+
+        #cocktails .service-card-body {
+            padding: 25px; /* Un poco menos de padding para balancear */
+        }
+
+        #cocktails .service-card-body h3 {
+            font-size: 1.6rem; /* Ajuste de tamaño para el título */
+        }
+
+        #cocktails .service-card-body p {
+            font-size: 0.95rem; /* Ajuste de tamaño para la descripción */
+            line-height: 1.6;
+        }
+        /* --- FIN DE ESTILOS MODIFICADOS --- */
+
 
         .service-card-body {
             padding: 30px;
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
         .service-card-body .icon {
@@ -219,19 +262,22 @@
 
         .btn-gold {
             background-color: var(--primary-gold);
-            color: var(--dark-bg);
+            color: #121212;
             border: 2px solid var(--primary-gold);
-            padding: 12px 35px;
+            padding: 16px 40px;
             font-weight: 600;
             transition: all 0.3s ease;
-            border-radius: 5px;
+            border-radius: 30px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 12px rgba(212,175,55,0.12);
         }
 
         .btn-gold:hover {
-            background-color: transparent;
+            background-color: #fff;
             color: var(--primary-gold);
+            border-color: var(--primary-gold);
         }
 
         footer {
@@ -252,6 +298,21 @@
             transform: translateY(-3px);
         }
 
+        html {
+        scroll-padding-top: 30px;
+        scroll-behavior: smooth;
+        }
+
+        /* Tarjetas de cócteles del mismo tamaño en desktop */
+        @media (min-width: 992px) {
+            .row.g-4 > [class^='col-lg-4'] {
+                display: flex;
+            }
+            .service-card {
+                height: 100%;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -259,13 +320,14 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">BarGroup</a>
+            <a class="navbar-brand" href="index.html"><img src="image/logo_texto_dorado.webp" alt="BarGroup Logo Texto" style="max-width: 150px; width: 100%;" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" href="#home">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#cocktails">Cócteles</a></li>
                     <li class="nav-item"><a class="nav-link" href="#services">Servicios</a></li>
                     <li class="nav-item"><a class="nav-link" href="#gallery">Galería</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
@@ -280,14 +342,99 @@
             <source src="image/hero-bg.webm" type="video/webm">
         </video>
         <div class="overlay"></div>
-        <div class="hero-content text-center animate__animated animate__fadeIn">
-            <h1>BarGroup</h1>
-            <p class="lead">Elevamos la experiencia de tu evento con barras móviles de lujo.</p>
+        <div class="hero-content text-center  ">
+            <img src="image/logo_dorado.webp" alt="BarGroup Logo" style="max-width: 350px; width: 100%;" />
+            <p class="lead">El mejor servicio de Bar y Coctelería para eventos.</p>
+            <a href="#contact" class="btn btn-gold mt-4">Cotizar Ahora</a>
         </div>
     </header>
 
+    <!-- Cocktails Section -->
+    <section id="cocktails" class="py-5" data-aos="fade-up">
+        <div class="container">
+            <div class="section-title">
+                <h2>Cócteles Clásicos</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="row g-4">
+                <!-- Boulevardier -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card animate__animated animate__fadeInUp">
+                        <img src="image/cocktail_boulevardier.webp" alt="Boulevardier">
+                        <div class="service-card-body">
+                            <h3>Boulevardier</h3>
+                            <p><strong>Ingredientes:</strong><br>45 ml Bourbon o Rye Whiskey<br>30 ml Bitter Campari<br>30 ml Vermut Rojo Dulce</p>
+                            <p><strong>Preparación:</strong><br>Vierte todos los ingredientes en un vaso mezclador con hielo. Remueve bien y cuela en una copa de cóctel fría.</p>
+                            <p><strong>Decoración:</strong><br>Decora con una piel de naranja, opcionalmente una piel de limón.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Clover Club -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card animate__animated animate__fadeInUp" style="animation-delay:0.1s;">
+                        <img src="image/cocktail_clover_club.webp" alt="Clover Club">
+                        <div class="service-card-body">
+                            <h3>Clover Club</h3>
+                            <p><strong>Ingredientes:</strong><br>45 ml Gin<br>15 ml Jarabe de Frambuesa<br>15 ml Jugo de Limón Fresco<br>Unas gotas de clara de huevo</p>
+                            <p><strong>Preparación:</strong><br>Agita todos los ingredientes en una coctelera con hielo y cuela en una copa de cóctel fría.</p>
+                            <p><strong>Decoración:</strong><br>Frambuesas frescas.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Daiquiri -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card animate__animated animate__fadeInUp" style="animation-delay:0.2s;">
+                        <img src="image/cocktail_daiquiri.webp" alt="Daiquiri">
+                        <div class="service-card-body">
+                            <h3>Daiquiri</h3>
+                            <p><strong>Ingredientes:</strong><br>60 ml Ron Blanco Cubano<br>20 ml Jugo de Lima Fresco<br>2 cucharaditas de azúcar fina</p>
+                            <p><strong>Preparación:</strong><br>En una coctelera añade todos los ingredientes y remueve bien para disolver el azúcar. Agrega hielo, agita y cuela en una copa de cóctel fría.</p>
+                            <p><strong>Decoración:</strong><br>No aplica.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Dry Martini -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card animate__animated animate__fadeInUp" style="animation-delay:0.3s;">
+                        <img src="image/cocktail_dry_martini.webp" alt="Dry Martini">
+                        <div class="service-card-body">
+                            <h3>Dry Martini</h3>
+                            <p><strong>Ingredientes:</strong><br>60 ml Gin<br>10 ml Vermut Seco</p>
+                            <p><strong>Preparación:</strong><br>Vierte todos los ingredientes en un vaso mezclador con hielo. Remueve bien y cuela en una copa de martini fría.</p>
+                            <p><strong>Decoración:</strong><br>Exprime el aceite de una piel de limón sobre el cóctel, o decora con aceitunas verdes si se prefiere.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Negroni -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card animate__animated animate__fadeInUp" style="animation-delay:0.4s;">
+                        <img src="image/cocktail_negroni.webp" alt="Negroni">
+                        <div class="service-card-body">
+                            <h3>Negroni</h3>
+                            <p><strong>Ingredientes:</strong><br>30 ml Gin<br>30 ml Bitter Campari<br>30 ml Vermut Rojo Dulce</p>
+                            <p><strong>Preparación:</strong><br>Vierte todos los ingredientes directamente en un vaso old fashioned frío con hielo. Remueve suavemente.</p>
+                            <p><strong>Decoración:</strong><br>Decora con media rodaja de naranja.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mojito -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card animate__animated animate__fadeInUp" style="animation-delay:0.5s;">
+                        <img src="image/cocktail_mojito.webp" alt="Mojito">
+                        <div class="service-card-body">
+                            <h3>Mojito</h3>
+                            <p><strong>Ingredientes:</strong><br>45 ml Ron Blanco Cubano<br>20 ml Jugo de Lima Fresco<br>6 ramas de menta<br>2 cucharaditas de azúcar blanca<br>Agua con gas</p>
+                            <p><strong>Preparación:</strong><br>Mezcla la menta con el azúcar y el jugo de lima. Añade un poco de agua con gas y llena el vaso con hielo. Vierte el ron y completa con agua con gas. Remueve ligeramente para integrar los ingredientes.</p>
+                            <p><strong>Decoración:</strong><br>Decora con ramas de menta y una rodaja de lima.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Services Section -->
-    <section id="services" class="py-5">
+    <section id="services" class="py-5  " data-aos="fade-up">
         <div class="container">
             <div class="section-title">
                 <h2>Nuestros Servicios</h2>
@@ -295,7 +442,7 @@
             </div>
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
-                    <div class="service-card animate__animated animate__fadeInUp">
+                    <div class="service-card  ">
                         <img src="image/luxury-wedding-bar.webp" alt="Bodas de Lujo">
                         <div class="service-card-body">
                             <div class="icon"><i class="fas fa-ring"></i></div>
@@ -305,7 +452,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="service-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                    <div class="service-card  " style="animation-delay: 0.2s;">
                         <img src="image/corporate-event-bar.webp" alt="Eventos Corporativos">
                         <div class="service-card-body">
                             <div class="icon"><i class="fas fa-briefcase"></i></div>
@@ -315,7 +462,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="service-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+                    <div class="service-card  " style="animation-delay: 0.4s;">
                         <img src="image/private-party-bar.webp" alt="Fiestas Privadas">
                         <div class="service-card-body">
                             <div class="icon"><i class="fas fa-glass-cheers"></i></div>
@@ -329,7 +476,7 @@
     </section>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="py-5">
+    <section id="gallery" class="py-5  " data-aos="fade-up">
     <div class="container">
         <div class="section-title">
             <h2>Galería de Eventos</h2>
@@ -337,33 +484,33 @@
         </div>
         <div class="row g-4">
             <div class="col-md-6 col-lg-4">
-                <div class="img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" class="img-fluid rounded" alt="Evento 1">
+                <div class="img-wrapper  ">
+                    <img src="image/eventos1.webp" class="img-fluid rounded" alt="Evento 1">
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
-                <div class="img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" class="img-fluid rounded" alt="Evento 2">
+                <div class="img-wrapper  ">
+                    <img src="image/eventos2.webp" class="img-fluid rounded" alt="Evento 2">
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
-                <div class="img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" class="img-fluid rounded" alt="Evento 3">
+                <div class="img-wrapper  ">
+                    <img src="image/eventos3.webp" class="img-fluid rounded" alt="Evento 3">
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
-                <div class="img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=600&q=80" class="img-fluid rounded" alt="Evento 4">
+                <div class="img-wrapper  ">
+                    <img src="image/eventos4.webp" class="img-fluid rounded" alt="Evento 4">
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
-                <div class="img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" class="img-fluid rounded" alt="Evento 5">
+                <div class="img-wrapper  ">
+                    <img src="image/eventos5.webp" class="img-fluid rounded" alt="Evento 5">
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
-                <div class="img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" class="img-fluid rounded" alt="Evento 6">
+                <div class="img-wrapper  ">
+                    <img src="image/eventos6.webp" class="img-fluid rounded" alt="Evento 6">
                 </div>
             </div>
         </div>
@@ -371,7 +518,7 @@
 </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-5">
+    <section id="contact" class="py-5  " data-aos="fade-up">
         <div class="container">
             <div class="section-title">
                 <h2>Solicita una Cotización</h2>
@@ -422,51 +569,89 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-4">
+    <footer class="py-4" data-aos="fade-up">
         <div class="container">
-            <p class="text-white-50">&copy; 2025 BarGroup. Todos los derechos reservados.</p>
+            <p class="text-white-50">&copy; 2025 Bargroup. Todos los derechos reservados.</p>
             <div class="social-icons">
-                <a href="https://instagram.com/bargroup.chile" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="mailto:contacto@bargroup.cl"><i class="fas fa-envelope"></i></a>
-                <a href="https://wa.me/56998971653" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://instagram.com/bargroup.chile" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:contacto@bargroup.cl" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://wa.me/56998971653" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>
 
-    <!-- Bootstrap JS Bundle -->
+    <!-- JS Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
+    <!-- Main Script -->
     <script>
-        // Form submission to WhatsApp
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+    document.addEventListener('DOMContentLoaded', function () {
+        // WhatsApp Form Submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+                const phone = '56998971653';
+                const whatsappMessage = `Hola BarGroup, mi nombre es ${name}.\n\nEmail: ${email}\n\nDetalles de mi evento:\n${message}`;
+                const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(whatsappMessage)}`;
+                window.open(whatsappUrl, '_blank');
+            });
+        }
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            const phone = '56998971653';
+        // Navbar style and active section
+        const navbar = document.querySelector('.navbar');
+        const sections = document.querySelectorAll('section, header');
+        const navLinks = document.querySelectorAll('.nav-link');
 
-            const whatsappMessage = `Hola BarGroup, mi nombre es ${name}.
-
-Email: ${email}
-
-Detalles de mi evento:
-${message}`;
-
-            const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(whatsappMessage)}`;
-
-            window.open(whatsappUrl, '_blank');
-        });
-
-        // Navbar style change on scroll
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
+        function updateNavbarStyle() {
             if (window.scrollY > 50) {
                 navbar.style.backgroundColor = 'var(--dark-bg)';
             } else {
                 navbar.style.backgroundColor = 'rgba(18, 18, 18, 0.85)';
             }
+        }
+
+        function updateActiveSection() {
+            let current = '';
+            const scrollY = window.pageYOffset;
+            sections.forEach(section => {
+                const id = section.getAttribute('id');
+                if (!id) return;
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = id;
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const href = link.getAttribute('href');
+                if (current && href && href.includes(`#${current}`)) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', function () {
+            updateNavbarStyle();
+            updateActiveSection();
         });
+        // Inicializar en carga
+        updateNavbarStyle();
+        updateActiveSection();
+
+        // Inicializar AOS
+        if (window.AOS) {
+            AOS.init({
+                duration: 1000,
+                once: true
+            });
+        }
+    });
     </script>
 </body>
 </html>
